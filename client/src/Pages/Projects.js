@@ -8,7 +8,7 @@ function Projects() {
       <section>
         <h1 className="text-center display-4 font-weight-bold mb-4">Projects</h1>
         <div className="row">
-          {projectDetails.map(({ title, image, description, techstack, previewLink, githubLink }) => (
+          {projectDetails.map(({ title, image, description, techstack, previewLink, githubLink, video }) => (
             <div className="col-md-6 col-lg-4 mb-4" key={title}>
               <Project
                 title={title}
@@ -17,6 +17,7 @@ function Projects() {
                 techstack={techstack}
                 previewLink={previewLink}
                 githubLink={githubLink}
+                video={video} // Pass video to Project component
               />
             </div>
           ))}
