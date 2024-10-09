@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
-import '../css/project.css'; // Ensure to import your CSS file
-
+import '../css/project.css';
 function Project({ title, image, description, techstack, previewLink, githubLink, video }) {
   const [showVideo, setShowVideo] = useState(false);
   const [showFullDescription, setShowFullDescription] = useState(false);

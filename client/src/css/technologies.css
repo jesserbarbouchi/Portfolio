@@ -1,0 +1,46 @@
+.technologies-container {
+    padding: 20px;
+  }
+  
+  .page-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjust spacing between items */
+  }
+  
+  .image-item {
+    flex: 0 0 calc(24% - 10px); /* 4 images per line with space */
+    margin: 5px;
+    border: 1px solid #ccc; /* Box border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    overflow: hidden; /* Ensures corners are rounded */
+    transition: transform 0.2s; /* Smooth scale transition */
+  }
+  
+  .image-item:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+  }
+  
+  .image-item img {
+    width: 80%; /* Smaller image size */
+    height: auto;
+    display: block; /* Removes extra space below the image */
+    margin: auto; /* Centers the image in the box */
+  }
+  
+  .image-caption {
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+    color: #555; /* Caption color */
+  }
+  

@@ -1,0 +1,32 @@
+.home__title {
+    font-size: 2.5rem; /* Adjust font size for better visibility */
+    line-height: 1.2; /* Improve line height for readability */
+  }
+  
+  .home__description {
+    font-size: 1.2rem; /* Increase font size for better readability */
+    margin: 10px 0; /* Add some margin to separate from the title */
+    color: #333; /* Change the text color for contrast */
+    max-width: 600px; /* Limit the width for better text flow */
+  }
+  
+  .home__social {
+    margin-top: 20px; /* Add margin for spacing */
+  }
+  
+  .home__social-icon {
+    font-size: 2rem; /* Increase icon size for visibility */
+    margin-right: 15px; /* Spacing between icons */
+    background-color: #f0f0f0; /* Light background color for icons */
+    padding: 10px; /* Padding for a better look */
+    border-radius: 50%; /* Circular background */
+    transition: transform 0.3s ease; /* Animation on hover */
+  }
+  
+  .home__social-icon:hover {
+    transform: scale(1.1); /* Scale up on hover for effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a shadow effect on hover */
+  }
+  .home__social-icon:nth-child(4):hover {
+    color: #e1306c; /* Change color on hover for Instagram */
+  }

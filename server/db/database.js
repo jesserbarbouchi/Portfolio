@@ -19,10 +19,12 @@ const connectToDB = async () => {
         await sql.connect(dbConfig);
         console.log('Connected to the database.');
     } catch (err) {
-        console.error('Database connection failed:', err);
+        console.error('Database connection failed:', err.message);
+        res.status(500).json({ error: 'Failed to connect to the database' });
     }
 };
 
+
 connectToDB();
 
-module.exports = { sql };
+module.exports = { sql, connectToDB  };

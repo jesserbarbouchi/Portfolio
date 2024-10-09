@@ -1,32 +1,32 @@
 const express = require('express');
 const router = express.Router();
-const { sql, db } = require('../db/database'); // Ensure db connection is properly imported
+const { sql, connectToDB } = require('../db/database'); 
 
-router.post('/', (req, res) => {
-    const { name, email, phone, message, socialMedia } = req.body;
-    const { linkedin, github, twitter } = socialMedia || {};  // Handle case if socialMedia is undefined
 
-    // Log the incoming data to check if social media is being received
-    console.log('Received Data:', { name, email, phone, message, linkedin, github, twitter });
+connectToDB();
 
-    if (!name || !email || !message) {
-        return res.status(400).json({ error: 'Name, email, and message are required' });
+router.post('/', async (req, res) => {
+    const { name, email, phone, message, linkedin, github, twitter } = req.body;
+
+    const sqlQuery = `INSERT INTO contact_submissions (name, email, phone, message, linkedin, github, twitter) 
+                      VALUES (@name, @email, @phone, @message, @linkedin, @github, @twitter)`;
+    try {
+        const request = new sql.Request();
+        request.input('name', sql.VarChar, name);
+        request.input('email', sql.VarChar, email);
+        request.input('phone', sql.VarChar, phone);
+        request.input('message', sql.VarChar, message);
+        request.input('linkedin', sql.VarChar, linkedin);
+        request.input('github', sql.VarChar, github);
+        request.input('twitter', sql.VarChar, twitter);
+
+        const result = await request.query(sqlQuery);
+        console.log('Data inserted successfully:', result);
+        res.status(201).json({ message: 'Contact created successfully' });
+    } catch (err) {
+        console.error('Error executing query:', err);
+        res.status(500).json({ error: 'Internal server error' });
     }
-
-    const query = `
-        INSERT INTO contact_submissions (name, email, phone, message, linkedin, github, twitter) 
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-    `;
-
-    db.query(query, [name, email, phone, message, linkedin, github, twitter], (err, result) => {
-        if (err) {
-            console.error('Database error:', err);
-            return res.status(500).json({ error: 'Database error' });
-        }
-        res.status(201).json({ message: 'Submission successful' });
-    });
 });
-
-
 
 module.exports = router;
